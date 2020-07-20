@@ -21,4 +21,4 @@ class Meals(models.Model):
         verbose_name_plural = 'Meals'
 
     def __name__(self):
-        return self.name
+        return f'{self.name}'

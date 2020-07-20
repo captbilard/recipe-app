@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Starter Template · Bootstrap</title>
+    <title>Our Recipe Page</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
@@ -59,9 +59,9 @@
           <!-- <a class="dropdown-item" href="#">Something else here</a> -->
         </div>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="#">Add Meal</a>
-      </li>
+      </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -72,10 +72,21 @@
 
 <main role="main" class="container">
 
-  <div class="starter-template">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+ 
+  <div class="meal-form">
+    <form action="{% url 'add_meal' %}" method="post">
+      {% csrf_token %} 
+      {% for field in add_meal_form %}
+        <div class="form-group">
+          {{field.label_tag}} {{field}}
+        </div>
+      {% endfor %}
+      <input class="btn btn-primary" type="submit" value="Submit">
+  
+  
+    </form>
   </div>
+  
 
 </main><!-- /.container -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

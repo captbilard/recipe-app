@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Starter Template · Bootstrap</title>
+    <title>Our Recipe Page</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
@@ -60,7 +60,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Add Meal</a>
+        <a class="nav-link" href="{% url 'add_meal' %}">Add Meal</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -73,8 +73,12 @@
 <main role="main" class="container">
 
   <div class="starter-template">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    {% for item in meals %}
+    <div class="each-meal">
+      <h3>{{item.name}}</h3>
+      
+    </div>
+    {% endfor %}
   </div>
 
 </main><!-- /.container -->
