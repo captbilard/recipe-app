@@ -42,9 +42,9 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <!-- <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
+      </li> -->
       <!-- <li class="nav-item">
         <a class="nav-link" href="#">Swallow</a>
       </li>
@@ -73,12 +73,21 @@
 <main role="main" class="container">
 
   <div class="starter-template">
-    {% for item in meals %}
-    <div class="each-meal">
-      <h3>{{item.name}}</h3>
-      
+    <div class="card-columns">
+      {% for item in meals %}
+
+        <div class="card">
+          <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            <h5 class="card-title">{{item.name}}</h5>
+            <p class="card-text">{{item.ingredients}}</p>
+            <p class="card-text">{{item.steps}}</p>
+            <p class="card-text"><small class="text-muted">Last updated: {{item.date_updated}}</small></p>
+          </div>
+        </div>
+      {% endfor %}
     </div>
-    {% endfor %}
+    
   </div>
 
 </main><!-- /.container -->

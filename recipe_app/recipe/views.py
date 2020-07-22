@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import AddMealForm
 from django.shortcuts import redirect
-from recipe.models import Meals
+from .models import Meals
 # Create your views here.
 def index(request):
     meals = Meals.objects.all()
