@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o&wsbz@6zov@-9q!y7$21wfm)r5$t!t-%gyzh8jtd6l*-)6nmh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'recipebydebo.herokuapp.com', '0.0.0.0']
 
 
 # Application definition
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,11 +78,14 @@ WSGI_APPLICATION = 'recipe_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd8hiem485ikd0f',
+        'HOST': 'ec2-54-234-44-238.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'tcggbfddsybjip',
+        'PASSWORD': 'e05fbb50b44e7f9b35346f31d7757ef3563c777d8fca98fe5ac58a7e86675b26'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -119,3 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+DATABASES['default'] = dj_database_url.config(default='postgres://tcggbfddsybjip:e05fbb50b44e7f9b35346f31d7757ef3563c777d8fca98fe5ac58a7e86675b26@ec2-54-234-44-238.compute-1.amazonaws.com:5432/d8hiem485ikd0f', conn_max_age=600, ssl_require=True)

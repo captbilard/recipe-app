@@ -22,5 +22,5 @@ class Meals(models.Model):
     class Meta:
         verbose_name_plural = 'Meals'
 
-    def __name__(self):
-        return f'{self.name}'
+    def _str__(self):
+        return self.name
