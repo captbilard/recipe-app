@@ -26,7 +26,7 @@ SECRET_KEY = 'o&wsbz@6zov@-9q!y7$21wfm)r5$t!t-%gyzh8jtd6l*-)6nmh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'recipebydebo.herokuapp.com', '0.0.0.0']
+ALLOWED_HOSTS = ['recipebydebo.herokuapp.com', '0.0.0.0']
 
 
 # Application definition
@@ -124,8 +124,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/images/'
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DATABASES['default'] = dj_database_url.config(default='postgres://tcggbfddsybjip:e05fbb50b44e7f9b35346f31d7757ef3563c777d8fca98fe5ac58a7e86675b26@ec2-54-234-44-238.compute-1.amazonaws.com:5432/d8hiem485ikd0f', conn_max_age=600, ssl_require=True)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
